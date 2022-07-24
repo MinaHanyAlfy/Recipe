@@ -9,6 +9,15 @@ import UIKit
 
 class FilterCollectionViewCell: UICollectionViewCell {
     static let identifier = "FilterCollectionViewCell"
+    override var isSelected: Bool{
+        didSet{
+            if isSelected {
+                mainView.backgroundColor = .systemMint
+            }else{
+                mainView.backgroundColor = .systemGreen
+            }
+        }
+    }
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var filterLabel: UILabel!
     override func awakeFromNib() {

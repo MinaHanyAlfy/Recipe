@@ -239,7 +239,6 @@
 		7FA90586288B495400F87928 /* OtherVc */ = {
 			isa = PBXGroup;
 			children = (
-				7FA90594288B4A7C00F87928 /* SafariViewController */,
 				7FA90593288B4A1600F87928 /* SearchResultViewController */,
 			);
 			path = OtherVc;
@@ -259,13 +258,6 @@
 				7FA90595288B659700F87928 /* SearchResultViewController.swift */,
 			);
 			path = SearchResultViewController;
-			sourceTree = "<group>";
-		};
-		7FA90594288B4A7C00F87928 /* SafariViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SafariViewController;
 			sourceTree = "<group>";
 		};
 		7FB7373E288C03030098DA3F /* View */ = {

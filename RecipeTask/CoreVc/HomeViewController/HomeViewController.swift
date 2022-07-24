@@ -172,7 +172,6 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected ")
         switch indexPath.row {
         case 0:
             filter = "all"

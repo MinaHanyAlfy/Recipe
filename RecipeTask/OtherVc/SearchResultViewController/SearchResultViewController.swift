@@ -45,7 +45,6 @@ class SearchResultViewController: UIViewController {
         noRecipeView.alpha = 1
         view.addSubview(noRecipeView)
         tableViewHandler()
-        // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -63,6 +62,7 @@ class SearchResultViewController: UIViewController {
     
    
 }
+//MARK: - For Recipe List TableView
 extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipes?.count ?? 0
@@ -101,6 +101,7 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
             moreRecipes()
         }
     }
+    //MARK: - For Fetching with Pagination
     func moreRecipes(){
         guard let url = url else {return}
         Network.shared.getResults(url, APICase: nil, decodingModel: RecipeResponse.self) { results in

@@ -76,7 +76,7 @@ public class RecipeDetailsViewController: UIViewController, SFSafariViewControll
     }
 }
 
-//For Downloading Image
+//MARK: - For Downloading Image
 extension RecipeDetailsViewController{
     
     private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {

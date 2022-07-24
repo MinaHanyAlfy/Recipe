@@ -12,8 +12,8 @@ import Foundation
 protocol HomeViewModelProtocol {
     func recipesResult()
     func fetchRecipesDefault(isPagination: Bool)
-    func recipesSearch(q: String)
-    func recipesSearchFiltered(q: String,filter: String)
+//    func recipesSearch(q: String)
+//    func recipesSearchFiltered(q: String,filter: String)
 }
 public class HomeViewModel: HomeViewModelProtocol {
    
@@ -75,35 +75,7 @@ extension HomeViewModel{
             }
         }
     }
-    func recipesSearch(q: String) {
-        Network.shared.getResults(APICase: .getRecipe(q: q), decodingModel: RecipeResponse.self) { results in
-           
-            DispatchQueue.main.async {
-            switch results {
-            case .success(let recipe):
-                self.recipes = recipe.hits
-                
-            case .failure(let error):
-                print(error)
-            }
-            }
-        }
-    }
-    
-    func recipesSearchFiltered(q: String, filter: String) {
-        Network.shared.getResults(APICase: .getRecipeWithFilteration(q: q, filter: filter), decodingModel: RecipeResponse.self) { results in
-           
-            DispatchQueue.main.async {
-            switch results {
-            case .success(let recipe):
-                self.recipes = recipe.hits
-                
-            case .failure(let error):
-                print(error)
-            }
-            }
-        }
-    }
+ 
     
     
     
