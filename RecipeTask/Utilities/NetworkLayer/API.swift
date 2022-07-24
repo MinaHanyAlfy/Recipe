@@ -9,6 +9,8 @@ import Foundation
 
 enum API{
     case getRecipe(q: String)
+    case getRecipeWithFilteration(q: String,filter: String)
+    case getDefault
 }
 
 extension API: EndPoint{
@@ -24,7 +26,10 @@ extension API: EndPoint{
         switch self {
         case .getRecipe(let q):
             return [URLQueryItem(name: "q", value: q),URLQueryItem(name: "app_id", value: "c5e3f076"),URLQueryItem(name: "app_key", value: "22db394a29326cdc705c2a801cb43fc3"),URLQueryItem(name: "type", value: "public")]
-        
+        case .getRecipeWithFilteration(let q, let filter):
+            return  [URLQueryItem(name: "q", value: q),URLQueryItem(name: "app_id", value: "c5e3f076"),URLQueryItem(name: "app_key", value: "22db394a29326cdc705c2a801cb43fc3"),URLQueryItem(name: "type", value: "public"),URLQueryItem(name: "health", value: filter)]
+        case .getDefault:
+            return [URLQueryItem(name: "app_id", value: "c5e3f076"),URLQueryItem(name: "app_key", value: "22db394a29326cdc705c2a801cb43fc3"),URLQueryItem(name: "type", value: "public")]
         default:
             return []
         }
@@ -35,8 +40,7 @@ extension API: EndPoint{
     
     var method: HTTPMethod {
         switch self {
-        case .getRecipe:
-                return  .get
+        
         default :
             return  .get
         }
@@ -45,8 +49,9 @@ extension API: EndPoint{
     
     var path: String {
         switch self {
-        case .getRecipe:
+        case .getRecipe, .getDefault, .getRecipeWithFilteration:
             return "recipes/v2"
+            
         }
     }
     

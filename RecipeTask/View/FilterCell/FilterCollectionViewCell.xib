@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCollectionViewCell" id="gTV-IL-0wX" customClass="FilterCollectionViewCell" customModule="RecipeTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="191" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="191" height="62"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpr-x6-sPV">
+                        <rect key="frame" x="8" y="8" width="175" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="HgD-hu-c0k">
+                                <rect key="frame" x="8" y="9" width="159" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HgD-hu-c0k" firstAttribute="leading" secondItem="Tpr-x6-sPV" secondAttribute="leading" constant="8" id="59E-DN-RQb"/>
+                            <constraint firstAttribute="trailing" secondItem="HgD-hu-c0k" secondAttribute="trailing" constant="8" id="AtK-M8-eNK"/>
+                            <constraint firstItem="HgD-hu-c0k" firstAttribute="height" secondItem="Tpr-x6-sPV" secondAttribute="height" multiplier="0.6" id="O95-pf-qSY"/>
+                            <constraint firstItem="HgD-hu-c0k" firstAttribute="centerY" secondItem="Tpr-x6-sPV" secondAttribute="centerY" id="bTc-RJ-ovo"/>
+                            <constraint firstItem="HgD-hu-c0k" firstAttribute="centerX" secondItem="Tpr-x6-sPV" secondAttribute="centerX" id="yoL-c6-GdB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Tpr-x6-sPV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="5Yb-LO-Eox"/>
+                <constraint firstAttribute="bottom" secondItem="Tpr-x6-sPV" secondAttribute="bottom" constant="8" id="mSz-J9-Tp4"/>
+                <constraint firstItem="Tpr-x6-sPV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="som-KO-dLT"/>
+                <constraint firstAttribute="trailing" secondItem="Tpr-x6-sPV" secondAttribute="trailing" constant="8" id="vW4-HA-Jpg"/>
+            </constraints>
+            <size key="customSize" width="191" height="62"/>
+            <connections>
+                <outlet property="filterLabel" destination="HgD-hu-c0k" id="6fl-3s-Nvs"/>
+                <outlet property="mainView" destination="Tpr-x6-sPV" id="Azp-KM-EMN"/>
+            </connections>
+            <point key="canvasLocation" x="209.42028985507247" y="1.3392857142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
