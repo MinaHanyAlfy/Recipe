@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F508DAB28969547008449BD /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F508DAA28969547008449BD /* SearchResultViewModel.swift */; };
 		7FA90541288B2D1100F87928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA90540288B2D1100F87928 /* AppDelegate.swift */; };
 		7FA90548288B2D1100F87928 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA90546288B2D1100F87928 /* Main.storyboard */; };
 		7FA9054B288B2D1100F87928 /* RecipeTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FA90549288B2D1100F87928 /* RecipeTask.xcdatamodeld */; };
@@ -61,6 +62,7 @@
 		6CDEEA85A57D0E9AC203B91D /* Pods_RecipeTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC8B5F5DC3D37CD19CB6084 /* Pods_RecipeTask_RecipeTaskUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeTask_RecipeTaskUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73688437C03456861D357830 /* Pods-RecipeTask-RecipeTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeTask-RecipeTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-RecipeTask-RecipeTaskUITests/Pods-RecipeTask-RecipeTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7F508DAA28969547008449BD /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		7FA9053D288B2D1100F87928 /* RecipeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA90540288B2D1100F87928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FA90547288B2D1100F87928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F508DAC28969B2D008449BD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FB7373F288C03290098DA3F /* FilterCollectionViewCell.swift */,
+				7FB73743288C03400098DA3F /* RecipeTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7F508DAD28969BCB008449BD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7F508DAA28969547008449BD /* SearchResultViewModel.swift */,
+				7FA90589288B497E00F87928 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7F508DAE28969C0F008449BD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7FA90586288B495400F87928 /* OtherVc */,
+				7FA90584288B492F00F87928 /* CoreVc */,
+			);
+			name = Controllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		7FA90534288B2D1100F87928 = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +190,11 @@
 		7FA9053F288B2D1100F87928 /* RecipeTask */ = {
 			isa = PBXGroup;
 			children = (
-				7FA9054C288B2D1400F87928 /* Assets.xcassets */,
-				7FB7373E288C03030098DA3F /* View */,
 				7FA90590288B49BF00F87928 /* Model */,
-				7FA90586288B495400F87928 /* OtherVc */,
-				7FA90584288B492F00F87928 /* CoreVc */,
+				7FB7373E288C03030098DA3F /* View */,
+				7F508DAD28969BCB008449BD /* ViewModel */,
+				7FA9054C288B2D1400F87928 /* Assets.xcassets */,
+				7F508DAE28969C0F008449BD /* Controllers */,
 				7FA90577288B323700F87928 /* Utilities */,
 				7FA90551288B2D1400F87928 /* Info.plist */,
 			);
@@ -214,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				7FA90587288B497100F87928 /* HomeViewController.swift */,
-				7FA90589288B497E00F87928 /* HomeViewModel.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -263,31 +292,14 @@
 		7FB7373E288C03030098DA3F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7F508DAC28969B2D008449BD /* Cells */,
+				7FEA45DB288D8C92004E9EA1 /* ZeroStateView */,
 				7FA90546288B2D1100F87928 /* Main.storyboard */,
 				7FA9054E288B2D1400F87928 /* LaunchScreen.storyboard */,
-				7FEA45DB288D8C92004E9EA1 /* ZeroState */,
-				7FB73749288C03570098DA3F /* FilterCell */,
-				7FB73747288C03460098DA3F /* RecipeCell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7FB73747288C03460098DA3F /* RecipeCell */ = {
-			isa = PBXGroup;
-			children = (
-				7FB73743288C03400098DA3F /* RecipeTableViewCell.swift */,
+				7FB73740288C03290098DA3F /* FilterCollectionViewCell.xib */,
 				7FB73744288C03400098DA3F /* RecipeTableViewCell.xib */,
 			);
-			path = RecipeCell;
-			sourceTree = "<group>";
-		};
-		7FB73749288C03570098DA3F /* FilterCell */ = {
-			isa = PBXGroup;
-			children = (
-				7FB7373F288C03290098DA3F /* FilterCollectionViewCell.swift */,
-				7FB73740288C03290098DA3F /* FilterCollectionViewCell.xib */,
-			);
-			path = FilterCell;
+			path = View;
 			sourceTree = "<group>";
 		};
 		7FB7374A288C2EA40098DA3F /* CoreDataLayer */ = {
@@ -309,12 +321,12 @@
 			path = ModelCoreData;
 			sourceTree = "<group>";
 		};
-		7FEA45DB288D8C92004E9EA1 /* ZeroState */ = {
+		7FEA45DB288D8C92004E9EA1 /* ZeroStateView */ = {
 			isa = PBXGroup;
 			children = (
 				7FEA45DC288D8CA4004E9EA1 /* ZeroStateView.swift */,
 			);
-			path = ZeroState;
+			path = ZeroStateView;
 			sourceTree = "<group>";
 		};
 		7FEA45DE288D962C004E9EA1 /* Extensions */ = {
@@ -581,6 +593,7 @@
 			files = (
 				7FEA45DD288D8CA4004E9EA1 /* ZeroStateView.swift in Sources */,
 				7FA9057D288B3B4A00F87928 /* EndPoint.swift in Sources */,
+				7F508DAB28969547008449BD /* SearchResultViewModel.swift in Sources */,
 				7FA9058A288B497E00F87928 /* HomeViewModel.swift in Sources */,
 				7FA90592288B49D700F87928 /* Recipe.swift in Sources */,
 				7FA90541288B2D1100F87928 /* AppDelegate.swift in Sources */,

@@ -16,7 +16,7 @@ struct RecipeLinks: Codable {
 struct RecipeResponse: Codable {
     let from, to, count: Int
     var links: RecipeLinks
-    let hits: [Hit]
+    var hits: [Hit]
 
     enum CodingKeys: String, CodingKey {
         case from, to, count

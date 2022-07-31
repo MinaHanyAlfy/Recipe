@@ -15,10 +15,12 @@ enum Filter: String {
 
 protocol HomeViewProtocol: AnyObject {
     func recipeSuccess(recipes: [Hit])
-    
+    func recipeSearchSuccess(recipes: [Hit],url: String)
     
 }
 class HomeViewController: UIViewController, HomeViewProtocol {
+    
+    private var resultsController: SearchResultViewController?
     private var recipeList: RecipeResponse?
     private var recipes: [Hit]?{
         didSet{
@@ -203,46 +205,23 @@ extension HomeViewController: UISearchResultsUpdating{
             return
             
         }
-        if filter != nil && filter != "all"{
+        self.resultsController = resultsController
+        if filter != nil && filter != "all" {
             guard let filtered = filter,
                   !filtered.trimmingCharacters(in: .whitespaces).isEmpty else{return}
-            Network.shared.getResults(APICase: .getRecipeWithFilteration(q: query, filter: filtered), decodingModel: RecipeResponse.self) { results in
-                
-                DispatchQueue.main.async {
-                    switch results {
-                    case .success(let recipesList):
-                        self.recipeList = recipesList
-                        resultsController.url = recipesList.links.next.href
-                        resultsController.recipes = recipesList.hits
-                        resultsController.tableView.reloadData()
-                        
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            }
-        } else {
-            Network.shared.getResults(APICase: .getRecipe(q: query), decodingModel: RecipeResponse.self) { results in
-                
-                DispatchQueue.main.async {
-                    switch results {
-                    case .success(let recipesList):
-                        self.recipeList = recipesList
-                        resultsController.url = recipesList.links.next.href
-                        resultsController.recipes = recipesList.hits
-                        resultsController.tableView.reloadData()
-                        
-                    case .failure(let error):
-                        print(error)
-                        resultsController.recipes = []
-                        resultsController.tableView.reloadData()
-                    }
-                }
-            }
             
+            viewModel.fetchRecipesSearchFiltered(q: query, filter: filtered)
+        } else {
+            viewModel.fetchRecipesWithQuery(query)
         }
         
-        
     }
+    
+        func recipeSearchSuccess(recipes: [Hit],url: String) {
+            guard let resultsController = resultsController else{return}
+            resultsController.url = url
+            resultsController.recipes = recipes
+            resultsController.tableView.reloadData()
+        }
     
 }

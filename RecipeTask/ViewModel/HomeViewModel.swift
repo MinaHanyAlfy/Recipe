@@ -12,12 +12,21 @@ import Foundation
 protocol HomeViewModelProtocol {
     func recipesResult()
     func fetchRecipesDefault(isPagination: Bool)
-//    func recipesSearch(q: String)
-//    func recipesSearchFiltered(q: String,filter: String)
+    func fetchRecipesWithQuery(_ q: String)
+    func fetchRecipesSearchFiltered(q: String,filter: String)
 }
 public class HomeViewModel: HomeViewModelProtocol {
    
-    var recipeList: RecipeResponse?
+    
+    
+   
+    var recipeList: RecipeResponse?{
+        didSet{
+            guard let hits = recipeList?.hits else{return}
+            guard let url = recipeList?.links.next.href else {return}
+            self.view.recipeSearchSuccess(recipes: hits, url: url)
+        }
+    }
     var recipes: [Hit] = []{
         didSet{
             DispatchQueue.main.async {
@@ -76,7 +85,38 @@ extension HomeViewModel{
         }
     }
  
+    func fetchRecipesWithQuery(_ q: String) {
+        Network.shared.getResults(APICase: .getRecipe(q: q), decodingModel: RecipeResponse.self) { results in
+            DispatchQueue.main.async {
+                switch results {
+                case .success(let recipesList):
+                    self.recipeList = recipesList
+                    
+                case .failure(let error):
+                    print(error)
+                    self.recipeList?.hits = []
+                    
+                }
+            }
+        }
+    }
     
+    
+    func fetchRecipesSearchFiltered(q: String, filter: String) {
+        Network.shared.getResults(APICase: .getRecipeWithFilteration(q: q, filter: filter), decodingModel: RecipeResponse.self) { results in
+            
+            DispatchQueue.main.async {
+                switch results {
+                case .success(let recipesList):
+                    self.recipeList = recipesList
+                    
+                case .failure(let error):
+                    print(error)
+                    self.recipeList?.hits = []
+                }
+            }
+        }
+    }
     
     
 }

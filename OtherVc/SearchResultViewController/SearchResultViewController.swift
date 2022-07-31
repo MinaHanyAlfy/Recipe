@@ -6,9 +6,11 @@
 //
 
 import UIKit
-
-class SearchResultViewController: UIViewController {
-
+protocol SearchResultProtocol: AnyObject{
+    func recipesSuccess(recipes: [Hit])
+}
+class SearchResultViewController: UIViewController, SearchResultProtocol {
+    private var viewModel: SearchResultViewModelProtocol!
     var recipes : [Hit]?{
         didSet{
             DispatchQueue.main.async { [self] in
@@ -45,6 +47,7 @@ class SearchResultViewController: UIViewController {
         noRecipeView.alpha = 1
         view.addSubview(noRecipeView)
         tableViewHandler()
+        viewModel = SearchResultViewModel(view: self)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -98,26 +101,13 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let recipes = recipes else{return}
         if indexPath.row == recipes.count - 1{
-            moreRecipes()
+            guard let url = url else {return}
+            viewModel.requestRecipes(url: url)
         }
     }
-    //MARK: - For Fetching with Pagination
-    func moreRecipes(){
-        guard let url = url else {return}
-        Network.shared.getResults(url, APICase: nil, decodingModel: RecipeResponse.self) { results in
-            
-            DispatchQueue.main.async {
-                switch results {
-                case .success(let recipesList):
-                    self.recipes?.append(contentsOf: recipesList.hits)
-                    
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-
+  
+    func recipesSuccess(recipes: [Hit]) {
+        self.recipes?.append(contentsOf: recipes)
     }
     
     
